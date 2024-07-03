@@ -1,18 +1,63 @@
 package clases;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Biblioteca {
+
+    Scanner scanner = new Scanner(System.in)
+    //alcance, tipo de dato, etiqueta del atributo
+
     private ArrayList<Libro> libros;
 
-    //Constructor (siempre público)
+    //Constructor
+    //Siempre público. Se llama igual que la clase. Es el único método que va en mayúscula.
+    //Parámetros que voy a necesitar para construir
+    //Por dentro, la asignación de valores
+
     public Biblioteca() {
         this.libros = new ArrayList<Libro>();
     }
 
-    public void agregarLibro(Libro libro) {    };
+    //Alcance, Tipo de retorno, nombre del método, Parámetros (si no recibe los parámetros igual van los paréntesis)
+    //Dentro de las llaves va la lógica, las lineas de ejecución
 
-    public Libro buscarLibro(String titulo) {    }
+    public void agregarLibro(Libro libro) {
+        libros.add(libro);
+        System.out.println("Libro agregado : " + libro.toString());
+    }
 
-    public void listarLibros() {    }
+    public Libro buscarLibro(String titulo) {
+        //Necesito recorrer mi array de libros y preguntar si el libro pasado x parametro es igual
+        // al titulo del libro que está revisando en esa iteración, si lo es necesito que lo retorne
+
+        for (Libro libro: libros) {
+            if (libro.getTitulo() == titulo) {
+                return libro;
+            }
+        }
+        return null;
+    }
+
+    public void listarLibros() {
+        if (libros.isEmpty()) {
+            System.out.println("No hay libros en la biblioteca.");
+        } else {
+            for (Libro libro: libros) {
+                System.out.println(libro);
+            }
+        }
+    }
+
+    public void crearLibro(){
+        System.out.printf("");
+        String titulo = scanner.nextLine();
+        String autor = scanner.nextLine();
+        Integer cantidadPaginas = scanner.nextLine ();
+
+        Libro nuevoLibro = new Libro(titulo,autor,cantidadPaginas);
+
+        libros.add(nuevoLibro);
+
+    }
 }
