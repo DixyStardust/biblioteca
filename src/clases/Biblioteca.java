@@ -1,6 +1,7 @@
 package clases;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Biblioteca {
@@ -32,7 +33,7 @@ public class Biblioteca {
         // al titulo del libro que está revisando en esa iteración, si lo es necesito que lo retorne
 
         for (Libro libro: libros) {
-            if (libro.getTitulo() == titulo) {
+            if (Objects.equals(libro.getTitulo(), titulo)) {
                 return libro;
             }
         }
@@ -50,12 +51,10 @@ public class Biblioteca {
     }
 
     public void crearLibro(){
-        System.out.printf("");
+        System.out.print("");
         String titulo = scanner.nextLine();
         String autor = scanner.nextLine();
-        Integer cantidadPaginas = scanner.nextLine ();
-
-        Libro nuevoLibro = new Libro(titulo,autor,cantidadPaginas);
+        Integer cantidadPaginas = scanner.nextInt();
 
         libros.add(nuevoLibro);
 
